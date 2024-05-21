@@ -24,8 +24,12 @@
                 };
                 $scope.errorMessage = 'Valid Message: ' + short_name + " # " + menu_num;
                 var url = "https://coursera-jhu-default-rtdb.firebaseio.com/menu_items/" + short_name + "/menu_items/" + menu_num + ".json";
-                console.log(window.location.pathname)
-                $scope.fav_img_url = "http://" + window.location.host + "/" + window.location.pathname + "/images/menu/" + short_name + "/" + input + ".jpg";
+                var base_url = window.location.href.substring(0, window.location.href.lastIndexOf("/"))
+                var base_url = base_url.substring(0, base_url.lastIndexOf("/"))
+                console.log(base_url)
+                console.log(window.location.href)
+                
+                $scope.fav_img_url = base_url + "/images/menu/" + short_name + "/" + input + ".jpg";
                 console.log(url);
                 $scope.menu_num = menu_num;
                 $http.get(url)
