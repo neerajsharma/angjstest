@@ -1,0 +1,31 @@
+<div class="container">
+    <div ng-if="showprefs">
+        <h2 id="menu-categories-title" class="text-center" >My Infos</h2>
+    <div>
+        <table>
+            <tr>
+                <td>First Name: </td><td><span>{{myinfoPrefs.firstName}}</span></td>
+            </tr>
+            <tr>
+                <td>Last Name: </td><td><span>{{myinfoPrefs.lastName}}</span></td>
+            </tr>
+            <tr>
+                <td>Email: </td><td><span>{{myinfoPrefs.email}}</span></td>
+            </tr>
+            <tr>
+                <td>Phone: </td><td><span>{{myinfoPrefs.phone}}</span></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+
+        <p>Fav Item Title: {{myinfoPrefs.fav_title}}</p>
+        <p>Fav Item Description: {{myinfoPrefs.fav_description}}</p>
+
+        <img ng-src="{{myinfoPrefs.fav_img_url}}" alt="Fav Item Image"/>
+    </div>
+    </div>
+    <div ng-if="!showprefs">
+        Not Signed up Yet. <a ui-sref="public.signup">Sign up Now!</a>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<h2>Signup Form</h2>
+
+<style>
+    .input {
+        background-color: aliceblue;
+        color: black;
+    }
+    .error {
+        color: red;
+    }
+</style>
+
+<div class="container">
+    <h2>Signup Form</h2>
+    <form name="signupForm" ng-submit="submitForm(signupForm.$valid)" novalidate>
+        <div class="form-group" ng-class="{'has-error': signupForm.firstName.$invalid && signupForm.firstName.$touched}">
+            <label for="firstName">First Name:</label>
+            <input type="text" class="form-control" id="firstName" 
+                name="firstName" ng-model="user.firstName" required>
+            <span ng-show="signupForm.firstName.$invalid && signupForm.firstName.$touched"
+                class="help-block">
+                First Name is required.
+            </span>
+        </div>
+        <div class="form-group" ng-class="{'has-error': signupForm.lastName.$invalid && signupForm.lastName.$touched}">
+            <label for="lastName">Last Name:</label>
+            <input type="text" class="form-control" id="lastName" 
+                name="lastName" ng-model="user.lastName" required>
+            <span ng-show="signupForm.lastName.$invalid && signupForm.lastName.$touched"
+                class="help-block">
+                Last Name is required.
+            </span>
+        </div>
+        <div class="form-group" ng-class="{'has-error': signupForm.email.$invalid && signupForm.email.$touched}">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" 
+                name="email" ng-model="user.email" required>
+            <span ng-show="signupForm.email.$invalid && signupForm.email.$touched"
+                class="help-block">
+                Valid email is required.
+            </span>
+        </div>
+        <div class="form-group" ng-class="{'has-error': signupForm.phone.$invalid && signupForm.phone.$touched}">
+            <label for="phone">Phone Number:</label>
+            <input type="text" class="form-control" id="phone" placeholder="Phone ###-###-####"
+            pattern="(\d{3})-(\d{3})-(\d{4})" name="phone" ng-model="user.phone" required>
+            <span ng-show="signupForm.phone.$invalid && signupForm.phone.$touched"
+                class="help-block">
+                Phone must be in the format ###-###-####.
+            </span>
+        </div>
+        <div class="form-group" ng-class="{'has-error': signupForm.menuShortNameFav.$invalid && signupForm.menuShortNameFav.$touched}">
+            <label for="menuShortNameFav">
+                Menu Short Name Fav:
+            </label>
+            <input type="text" class="form-control" id="menuShortNameFav" name="menuShortNameFav"
+                ng-model="user.menuShortNameFav" required>
+            <span ng-show="signupForm.menuShortNameFav.$invalid && signupForm.menuShortNameFav.$touched"
+                class="help-block">
+                Favorite Menu Short Name is required:
+            </span>
+        </div>
+
+        <button type="submit" class="btn btn-primary" ng-disabled="signupForm.$invalid">
+            Submit
+        </button>
+    </form>
+    <div ng-if="responseData" class="alert">
+        {{responseData}}
+    </div>
+    <div ng-if="errorMessage" class="alert alert-danger">
+        {{errorMessage}}
+    </div>
+</div>
